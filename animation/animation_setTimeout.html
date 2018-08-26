@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        #rect {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="rect"></div>
+<script>
+    function positionRect() {
+        var elem = document.getElementById('rect');
+        elem.style.position = "absolute";
+        elem.style.left = "50px";
+        elem.style.top = "50px";
+        timer = setTimeout(moveRect,1000);//一秒后开始移动元素
+    }
+    function moveRect() {
+        var elem = document.getElementById('rect');
+        var xpos = parseInt(elem.style.left);//此处的elem.style.left实际是一个字符串"50px"
+        var ypos = parseInt(elem.style.top);
+        if(xpos == 200 && ypos == 200) {
+            return true;
+        }
+        if(xpos > 200) {
+            xpos--;
+        }
+        if(xpos < 200) {
+            xpos++;
+        }
+        if(ypos > 200) {
+            ypos--;
+        }
+        if(ypos < 200) {
+            ypos++;
+        }
+        elem.style.left = xpos + 'px';//再次转换为字符串
+        elem.style.top = ypos + 'px';
+        timer = setTimeout(moveRect,10);
+    }
+    positionRect();
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        #rect {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="rect"></div>
+<script>
+    /* window.requestAnimationFrame()方法告诉浏览器您希望执行动画
+    * 并请求浏览器在下一次重绘之前调用指定的函数来执行动画。
+    * 该方法使用一个回调函数作为参数。*/
+    window.requestAnimationFrame = window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame;
+    let elem = document.getElementById('rect');
+    let left = 0;
+    //自动执行回调
+    requestAnimationFrame(step);
+    //持续改变元素位置
+    function step() {
+        if(left < window.innerWidth - 200) {
+            left += 1;
+            elem.style.marginLeft = left + 'px';
+            requestAnimationFrame(step);//递归调用
+        }
+    }
+</script>
+</body>
+</html>

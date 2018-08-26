@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        #rect {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="rect"></div>
+<script>
+    let elem = document.getElementById('rect');
+    let left = 0;
+    let timer = setInterval(function () {
+        if(left < window.innerWidth - 200) {
+            elem.style.marginLeft = left + 'px';
+            left++;
+        }else {
+            clearInterval(timer);
+        }
+    },1000/60) //一般认为人眼能识别的流畅动画为每秒60帧
+</script>
+</body>
+</html>
